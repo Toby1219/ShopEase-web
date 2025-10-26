@@ -39,7 +39,7 @@ class Authenticator(FlaskView):
             user = User(username=username, email=email, pwrd_text=password)
             user.set_password(password)
             user.create_user()
-            return redirect(url_for("Apiview:home"))
+            return redirect(url_for("WebView:home"))
         
         self.context["username_error"] = form_reg.username.errors
         self.context["email_error"] = form_reg.email.errors
