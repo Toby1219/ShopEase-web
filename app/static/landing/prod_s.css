@@ -1,0 +1,21 @@
+.product-img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.review-box {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    border: 1px solid rgb(201, 201, 201);
+}
+
+.recommended img {
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.recommended img:hover {
+    transform: scale(1.05);
+}

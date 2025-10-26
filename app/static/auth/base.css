@@ -1,0 +1,37 @@
+/* Custom CSS for Background and Form Card */
+body {
+    /* Fallback font */
+    font-family: 'Inter', sans-serif;
+    background: #f0f2f5;
+    /* Light grey background for contrast */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-container {
+    max-width: 450px;
+    width: 90%;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+/* Focus state for inputs */
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Styling for the toggle links */
+.form-toggle-link {
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.notifi{
+    font-weight: bold;
+}

@@ -1,0 +1,103 @@
+{% extends "api/base.html" %}
+{% block title %} DummyApi {% endblock %}
+{% block content %}
+<style>
+  
+</style>
+<link rel="stylesheet" href="{{ url_for('static', filename='api/api_view.css') }}">
+<main>
+  <div class="content">
+    <br>
+    <div class="search-section">
+      <input type="text" id="searchInput"
+        placeholder="Search... title, sku, category">
+      <button class="search-btn" id="search-btn">Search</button>
+    </div>
+
+  </div>
+
+  <div class="container">
+    <div class="data-holder">
+      <div class="sm-btn">
+        <p class="head-text">Response ( <span class="status" id="status-text"></span> )&nbsp; <span class="api-notifi" id="api-notifi">Notifications</span></p>
+        
+
+        <button class="smallBtn" id="smallBtn"
+          onclick="copyJSON(this)">Copy</button>
+      </div>
+      <pre><code class="language-json" id="txt-data"></code></pre>
+    </div>
+    <div class="sidebar">
+      <label><b>Product Names</b>:</label>
+      <select class="dropdown-select section select-box" id="option-1" size="1">
+          <option disabled selected>Product Names</option>
+        {% for v, d in context["combined_name"] %}
+          <option value="{{d}}">{{v}}</option>
+        {% endfor %}
+      </select>
+
+      <label><b>Product SKU</b>:</label>
+      <select class="dropdown-select section select-box" id="option-2">
+        <option disabled selected>Product SKU</option>
+        {% for sku in context["prod_sku"] %}
+          <option value="{{sku}}">{{sku}}</option>
+        {% endfor %}
+      </select>
+
+      <label><b>Category</b>:</label>
+      <select class="dropdown-select section select-box" id="option-3">
+        <option disabled selected>Product Categories</option>
+        {% for cate in context["categories"] %}
+          <option value="{{cate}}">{{cate}}</option>
+        {% endfor %}
+      </select>
+
+      <label><b>Tag</b>:</label>
+      <select class="dropdown-select section select-box" id="option-4">
+        <option disabled selected>Product Tags</option>
+        {% for tag in context["tags"] %}
+          <option value="{{tag}}">{{tag}}</option>
+        {% endfor %}
+      </select>
+
+      <div class="ch">
+        <p><b>Sort By Price: </b></p>
+        <label>
+          <input type="radio" name="priceOpt"
+            value="desc">
+          Highest to Lowest
+        </label>
+        <br>
+        <label>
+          <input type="radio" name="priceOpt"
+            value="asc">
+          Lowest to Highest
+        </label>
+      </div>
+
+      <div class="msg-view">
+        
+        <p class="total" id="total-item"></p>
+        <button class="filter-btn" id="filter">Filter</button>
+      </div>
+    </div>
+  </main>
+  <div class="pag" id="pag" style="text-align: center; padding-block: 10px;">
+    <div class="pagas" id="paginator">
+        <span class="prev-page" id="pag-btnPrev"
+            style="padding: 15px;"
+            onclick="">
+            <i class="fas fa-angle-left"></i>
+        </span>
+        <span id="curpage">1</span> of <span
+            id="total-page"></span>
+        <span class="next-page" id="pag-btnNext"
+            style="padding: 15px;"
+            onclick="">
+            <i class="fas fa-angle-right"></i>
+        </span>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='api/api_view.js') }}"></script>
+  
+  {% endblock %}

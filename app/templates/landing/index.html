@@ -1,0 +1,72 @@
+{% extends "landing/base.html" %}
+{% block title %} E-commerce Landing Page {% endblock %}
+{% block content %}
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Discover Your Style</h1>
+      <p>Trendy fashion pieces curated just for you</p>
+      <a href="{{ url_for('WebView:product_listing') }}" class="btn btn-primary mt-3">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="py-5">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-4">Featured Products</h2>
+      <div class="row g-4">
+        {% for prod in context["f_products"] %}
+          <div class="col-md-4" id="featured">
+            <a href="{{ url_for('WebView:product_single', name=prod.title) }}">
+              <div class="card product-card shadow-sm">
+                <img src="{{ prod.img_url }}" class="card-img-top" alt="Product 1">
+                <div class="card-body">
+                  <h5 class="card-title">{{ prod.title }}</h5>
+                  <p class="card-text">${{ prod.price }}</p>
+                  <button class="btn btn-outline-primary add-to-cart">Add to Cart</button>
+                </div>
+            </a>
+            </div>
+          </div>
+        {% endfor %}
+        <!-- <div class="col-md-4">
+          <div class="card product-card shadow-sm">
+            <img src="https://images.unsplash.com/photo-1513708922272-6bdf49a1cf58" class="card-img-top" alt="Product 2">
+            <div class="card-body">
+              <h5 class="card-title">Classic Sneakers</h5>
+              <p class="card-text">$79.99</p>
+              <button class="btn btn-outline-primary add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card product-card shadow-sm">
+            <img src="https://images.unsplash.com/photo-1512499617640-c2f999098c53" class="card-img-top" alt="Product 3">
+            <div class="card-body">
+              <h5 class="card-title">Smartwatch</h5>
+              <p class="card-text">$129.99</p>
+              <button class="btn btn-outline-primary add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-5 bg-light">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-4">About Us</h2>
+      <p class="lead">At ShopEase, we believe shopping should be effortless and enjoyable. We bring the best products from top brands to your fingertips.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-5">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-4">Get In Touch</h2>
+      <p>Have questions? Reach out to us at <a href="mailto:support@shopease.com">support@shopease.com</a></p>
+      <button class="btn btn-primary mt-3">Contact Us</button>
+    </div>
+  </section>
+{% endblock %}

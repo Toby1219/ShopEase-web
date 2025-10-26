@@ -1,0 +1,113 @@
+{% extends "landing/base.html" %}
+{% block title %}Product Listing{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='landing/prod_l.css') }}">
+  <div class="container my-5 py-5">
+    <br>
+    <div class="row g-4">
+      <!-- Filter Section -->
+      <div class="col-md-3">
+        <div class="filter-sidebar">
+          <h5 class="fw-bold mb-3">Filters</h5>
+          <!-- Category Filter -->
+          <div class="mb-4">
+            <h6 class="fw-semibold">Category</h6>
+            <select id="categoryFilter" class="form-select">
+              <option value="all" selected disabled>All</option>
+              {% for cat in context["category"] %}
+                <option value="{{ cat }}">{{ cat }}</option>
+              {% endfor %}
+            </select>
+            
+          </div>
+          <div class="mb-4">
+            <h6 class="fw-semibold">Tags</h6>
+            <select id="tagFilter" class="form-select">
+              <option value="all" selected disabled>All</option>
+              {% for tag in context["tag"] %}
+                <option value="{{ tag }}">{{ tag }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <!-- Price Filter -->
+          <!-- <div>
+            <h6 class="fw-semibold">Price</h6>
+              <div class="form-check">
+                <input class="form-check-input tag-filter" type="checkbox" value="desc" id="check-b-h">
+                <label class="form-check-label" for="check-b">High to Low</label>
+              </div>
+            <div class="form-check">
+              <input class="form-check-input tag-filter" type="checkbox" value="asc" id="check-b-l">
+              <label class="form-check-label" for="check-b">Low to High</label>
+            </div>
+          </div> -->
+          <hr>
+          <div class="text-center">
+            <button id="filter-btn" class="btn btn-outline-primary px-5">Filter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Listing -->
+      <div class="col-md-9">
+        <div class="row" id="productList">
+          <!-- Products inserted dynamically by JS -->
+          {% for prod in context["products"] %}
+            <div class="col-md-4 mb-4">
+              <div class="card product-card shadow-sm">
+                <img src="{{ prod.img_url }}" class="card-img-top" alt="image">
+                <div class="card-body text-center">
+                  <a href="{{ url_for('WebView:product_single', name=prod.title) }}">
+                    <h6 class="fw-bold"id="prod_name">{{ prod.title }}</h6>
+                  </a>
+                  <p class="text-muted">$ {{ prod.price }}</p>
+                  <button class="btn btn-outline-primary add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+      {% if context["products"]|count_list >= 12  %}
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center mt-4" id="pagination">
+            <li class="page-item arrow" id="prev-btn">
+                <i class="page-link bi bi-caret-left"></i>
+            </li>
+            <li class="page-item active" id="pag-num">
+                <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item" id="pag-num">
+                <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item" id="pag-num">
+                <a class="page-link" href="#">3</a>
+            </li>
+            <li class="page-item" id="pag-num">
+                <a class="page-link" href="#">4</a>
+            </li>
+            <li class="page-item" id="pag-num">
+              <a class="page-link" href="#">5</a>
+            </li>
+            <li class="page-item arrow" id="next-btn"> 
+                <i class="page-link bi bi-caret-right"></i>
+            </li>  
+            
+          </ul>
+        </nav>
+      {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Cart Icon -->
+  <!-- <div class="cart-icon" id="cartIcon">
+    🛒
+    <span class="cart-badge" id="cartCount">0</span>
+  </div> -->
+
+  <script src="{{ url_for('static', filename='landing/prod_l.js') }}"></script>
+
+{% endblock %}
+

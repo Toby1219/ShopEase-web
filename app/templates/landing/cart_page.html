@@ -1,0 +1,76 @@
+{% extends "landing/base.html" %}
+{% block title %}Checkout{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='landing/cart.css') }}">
+  <!-- Header -->
+  <section class="cart-header">
+    <div class="container">
+      <h1>Your Shopping Cart</h1>
+      <p>Review your items before proceeding to checkout</p>
+    </div>
+  </section>
+
+  <!-- Cart List -->
+  <section class="container my-5">
+    <div class="card p-4">
+      <h4 class="fw-bold mb-4">🛒 Cart Items</h4>
+
+      <div class="cart-item d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+        <div class="d-flex align-items-center">
+          <img src="https://images.unsplash.com/photo-1512499617640-c2f999098c53" alt="Smartwatch">
+          <div class="ms-3">
+            <h6 class="mb-1">Smartwatch</h6>
+            <p class="text-muted mb-0">$129.99</p>
+            <p></p>
+          </div>
+        </div>
+        <div>
+          <input type="number" class="form-control form-control-sm d-inline w-50" min="1" value="1">
+          <button class="btn btn-danger btn-sm ms-2"><i class="bi bi-trash"></i></button>
+        </div>
+      </div>
+
+      <div class="cart-item d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+        <div class="d-flex align-items-center">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e" alt="Headphones">
+          <div class="ms-3">
+            <h6 class="mb-1">Wireless Headphones</h6>
+            <p class="text-muted mb-0">$99.99</p>
+          </div>
+        </div>
+        <div>
+          <input type="number" class="form-control form-control-sm d-inline w-50" min="1" value="2">
+          <button class="btn btn-danger btn-sm ms-2"><i class="bi bi-trash"></i></button>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mt-4">
+        <h5>Total: <span class="text-success fw-bold">$329.97</span></h5>
+        <button class="btn btn-lg checkout-btn text-white" data-bs-toggle="modal" data-bs-target="#checkoutModal">Checkout</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Checkout Modal -->
+  <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="checkoutModalLabel">Order Confirmed</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+          <h5 class="mt-3">Thank you for your purchase!</h5>
+          <p>Your order has been successfully placed and will be processed soon.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">View Orders</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='landing/cart.js') }}"></script>
+{% endblock %}

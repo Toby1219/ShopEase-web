@@ -1,0 +1,79 @@
+{% extends "landing/base.html" %}
+<!-- product name from db -->
+{% block title %}Product {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='landing/prod_s.css') }}">
+
+  <!-- Product Section -->
+  <div class="container p-5 my-5">
+    
+    <div class="row g-4">
+      <div class="col-md-6">
+        <img src="{{ context['product'].img_url }}" alt="Product Image" class="product-img">
+      </div>
+      <div class="col-md-6">
+        <h2>{{ context["product"].title }}</h2>
+        <div class="text-muted"><p>Category: {{ context["category"] }}</p> <p>Tag: {{ context["tags"] }}</p></div>
+        
+        <h4 class="text-success mb-3">$ {{ context["product"].price }}</h4>
+        <p>{{ context["product"].description }}</p>
+        <button class="btn btn-primary btn-lg add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reviews Section -->
+  <div class="container mb-5">
+    <h3 class="mb-4">Customer Reviews</h3>
+
+    <!-- Demo Reviews -->
+     {% for review in context["reviews"] %}
+      <div class="review-box">
+        <small>{{ review.date|format_datetime }}</small>
+        <hr>
+        <strong>{{ review.user.username }}</strong> &nbsp;&nbsp; {{ review.rating }}/10 <span class="text-warning">★</span>
+        <p>{{ review.comment }}</p>
+      </div>
+    {% endfor %}
+
+    <!-- Add Review Form -->
+    <h5 class="mt-4">Leave a Review</h5>
+    <form id="reviewForm">
+      <div class="mb-3">
+        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+      </div>
+      <div class="mb-3">
+        <textarea class="form-control" id="review" rows="3" placeholder="Write your review..." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Submit Review</button>
+    </form>
+  </div>
+
+  <!-- Recommended Products -->
+  <div class="container mb-5">
+    <h3 class="mb-4">Recommended for You</h3>
+    
+    <div class="row g-4 recommended">
+      {% for recd_prod in context["recommended_products"] %}
+      <div class="col-md-3 col-6">
+          <a href="">
+          <div class="card h-100">
+            <img src="{{ recd_prod.img_url}}" class="card-img-top" alt="Image">
+            <div class="card-body">
+              <a href="{{ url_for('WebView:product_single', name=recd_prod.title) }}">
+                <h6 class="card-title">{{ recd_prod.title|shorten_text }}</h6>
+              </a>
+              <p class="text-success">$ {{ recd_prod.price }}</p>
+              <button class="btn btn-outline-primary add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <!-- <div class="cart-icon" id="cartIcon">
+    🛒
+    <span class="cart-badge" id="cartCount">0</span>
+  </div> -->
+  <script src="{{ url_for('static', filename='landing/prod_s.js') }}"></script>
+{% endblock %}

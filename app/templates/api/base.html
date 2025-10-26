@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='api/base.css') }}">
+        <!-- Prism CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+        <title>{% block title%}{% endblock %}</title>
+    </head>
+    <body>
+        <div id="loader" class="loader">
+            <div class="spinner"></div>
+        </div>
+        <div class="notification" id="notification"></div>
+        <div id="not" data-success="{{ '1' if signup_success else '0'}}"></div>
+
+    <nav>
+        <h1 class="top-h"><a href="{{ url_for('Apiview:index')}}">DummyApi.com</a></h1>
+
+        <button class="menu-btn" id="menu-btn" data-status="open">
+            <i class="fa fa-bars" style="font-size: 27px;"></i>
+        </button>
+    </nav>
+    <div class="dropdown-menu menuBox" id="menuBox">
+        <div class="dropend-items">
+            {% if not context["current_user"] %}
+                <a onclick="view_profile()" id="profile"><i class="fas fa-user"
+                    id="menu-toggle_u"></i> Guest
+                </a>
+                <a onclick="about_func()">About</a>
+                <div>_____________</div>
+               
+                <a href="{{url_for('Authenticator:user_login_in')}}">Sign in</a>
+            {% else %}
+                <a onclick="" id="profile"><i class="fas fa-user"
+                    id="menu-toggle_u"></i> {{context["current_username"]}}
+                </a>
+                <a id="all-prod">All Products</a>
+                <a onclick="about_func()">About</a>
+                <div>_____________</div>
+                <a href="{{url_for('Authenticator:user_logout')}}" id="log-out">Log out</a>
+            {% endif %}
+        </div>
+    </div>
+        {% block content%} {% endblock %}
+
+
+    <footer>
+        <div id="about" class="footer-info">
+            <div class="overlay-content">
+                <p>ShopEase Api. Built with love in 2025.<br>
+                <div style="text-align: center;">&copy; 2025</div></p>
+            </div>
+        </div>
+    </footer>
+        {% set messages = get_flashed_messages(with_categories=true)%}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div id="message" style="display: none;">{{message}}</div>
+        <div id="category"style="display: none;">{{category}}</div>
+        {% endfor %}
+        {% endif %}
+        <script src="{{ url_for('static', filename='api/base.js') }}"></script>
+        <!-- <script src="{{ url_for('static', filename='api/api_view.js') }}"></script> -->
+
+        <!-- Prism JS -->
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js"></script>
+
+        <div style="display: none;" id="uname">{{ context["current_username"] }}</div>
+
+    </body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dummyweb</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #2e3042, #1b1d2a, #10131c);
+      color: #f0f0f0;
+    }
+
+    header {
+      background: #2d3748;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #ffffff;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #d3d3d3;
+    }
+
+    .auth-buttons button {
+      padding: 0.75rem 1.5rem;
+      margin: 0 0.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #3f72af;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .auth-buttons button:hover {
+      background-color: #28527a;
+    }
+
+
+    footer {
+      background: #2d3748;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    
+    .footer-links a {
+      color: #cbd5e0;
+      text-decoration: none;
+    }
+    .footer-links a:hover{
+      color: whitesmoke;
+    }
+    
+
+
+    .overlay-dropdown {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(8px);
+        background-color: rgba(0, 0, 0, 0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        text-align: center;
+        padding: 2rem;
+      }
+      
+      .overlay-dropdown.show {
+        display: flex;
+      }
+      
+      .overlay-content {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 2rem;
+        border-radius: 10px;
+        color: white;
+        max-width: 500px;
+        width: 90%;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      }
+      
+      .overlay-content button {
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        background: #3f72af;
+        border: none;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .overlay-content button:hover {
+        background: #28527a;
+      }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="path/to/your/fontawesome/css/all.min.css">
+  <script src="{{ url_for('static', filename='index.js')}}" defer></script>
+</head>
+<body>
+
+  <header>
+    Dummy Website
+  </header>
+
+  <main>
+    <h2>Welcome to Dummy API</h2>
+    <p>A simple API web app logic with realistic dummy data.</p>
+    <div class="auth-buttons">
+      {% if not context["current_user"] %}
+        <a href="{{url_for('Authenticator:user_register')}}"><button>Register</button></a>
+        <a href="{{url_for('Authenticator:user_login_in')}}"><button>Login In</button></a>
+      {% else %}
+        <a href="{{url_for('Apiview:home')}}"><button>Api Home</button></a>
+        <a href="{{url_for('WebView:index')}}"><button>Web Home</button></a>
+      {% endif %}  
+    </div>
+  </main>
+
+  <footer>
+      <p>ShopEase Api. Built with love in 2025.</p>
+    
+      <div>&copy; 2025</div>
+</footer>
+</body>
+</html>

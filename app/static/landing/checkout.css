@@ -1,0 +1,21 @@
+.checkout-container {
+    max-width: 800px;
+    margin: 60px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-header {
+    background-color: #ff6f61;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.form-section h5 {
+    margin-bottom: 15px;
+    color: #333;
+    font-weight: 600;
+}

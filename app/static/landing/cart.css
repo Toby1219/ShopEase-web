@@ -1,0 +1,32 @@
+.cart-header {
+    background-color: #ff6f61;
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.cart-header h1 {
+    font-weight: 700;
+}
+
+.cart-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-btn {
+    background-color: #ff6f61;
+    border: none;
+}
+
+.checkout-btn:hover {
+    background-color: #21a007;
+}

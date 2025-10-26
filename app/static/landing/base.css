@@ -1,0 +1,119 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1523275335684-37898b6baf30') center/cover no-repeat;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.hero .btn-primary {
+    background-color: #ff6f61;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+}
+
+.hero .btn-primary:hover {
+    background-color: #e65a50;
+}
+
+.product-card img {
+    height: 250px;
+    object-fit: cover;
+}
+
+footer {
+    background-color: #222;
+    color: #ccc;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+/* Floating Cart Icon */
+.cart-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f3b408;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 1;
+}
+
+.cart-badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.search-bar{
+    border: 1px solid grey; 
+    background-color:white; 
+    border-radius:20px;
+    display: inline-flex;
+    padding-inline: 30px;
+    align-content: start;
+}
+
+.inputbox{
+    border-radius: 1rem;
+    padding-inline: 10px;
+    border: none;
+    background-color: transparent;
+}
+
+.search-bar input:focus {
+  outline: none;         /* removes the glow/outline */
+  box-shadow: none;      /* removes inner/outer glow */
+  border-color: inherit;
+  background-color: transparent;
+}
+
+.search-bar button{
+    position: relative;
+    
+}
+
+
+
+.active{
+    text-decoration: underline;
+    font-weight: 100;
+    
+}

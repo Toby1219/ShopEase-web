@@ -1,0 +1,128 @@
+{% extends "landing/base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='landing/profile.css') }}">
+<div></div>
+  <!-- Profile Header -->
+  <section class="profile-header my-5">
+    <div class="container">
+      <img src="https://randomuser.me/api/portraits/lego/3.jpg" alt="User">
+       <!-- <i class="bi bi-person" style="font-size: 100%; padding:1rem;"></i> -->
+      <h2 class="fw-bold">{{ context["user"].username }}</h2>
+      <p>Member since March 2023</p>
+      <p><a href="{{ url_for('Authenticator:user_logout') }}">Log out</a></p>
+    </div>
+  </section>
+
+  <!-- User Information Section -->
+  <section class="user-info">
+    <h4><i class="bi bi-person-circle me-2"></i>User Information</h4>
+    <form>
+      <div class="mb-3 row">
+        <label for="email" class="col-sm-4 col-form-label fw-bold">Email:</label>
+        <div class="col-sm-8 d-flex align-items-center">
+          <input type="email" id="email" class="form-control-plaintext" readonly value="{{ context['user'].email }}">
+          <i class="bi bi-pencil ms-2 edit-icon" title="Edit"></i>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="phone" class="col-sm-4 col-form-label fw-bold">Phone:</label>
+        <div class="col-sm-8 d-flex align-items-center">
+          <input type="text" id="phone" class="form-control-plaintext" readonly value="+1 (555) 123-4567">
+          <i class="bi bi-pencil ms-2 edit-icon" title="Edit"></i>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="address" class="col-sm-4 col-form-label fw-bold">Address:</label>
+        <div class="col-sm-8 d-flex align-items-center">
+          <input type="text" id="address" class="form-control-plaintext" readonly value="123 Maple Street, Springfield, IL">
+          <i class="bi bi-pencil ms-2 edit-icon" title="Edit"></i>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="payment" class="col-sm-4 col-form-label fw-bold">Preferred Payment Method:</label>
+        <div class="col-sm-8 d-flex align-items-center">
+          <input type="text" id="payment" class="form-control-plaintext" readonly value="Visa ending in 4242">
+          <i class="bi bi-pencil ms-2 edit-icon" title="Edit"></i>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="shipping" class="col-sm-4 col-form-label fw-bold">Shipping Preference:</label>
+        <div class="col-sm-8 d-flex align-items-center">
+          <input type="text" id="shipping" class="form-control-plaintext" readonly value="Standard (3–5 business days)">
+          <i class="bi bi-pencil ms-2 edit-icon" title="Edit"></i>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <!-- Use js to display once there is a change in input box -->
+        <button class="btn btn-success d-none"> Save </button>
+        <div class="p-2 bg-success text-capitalize text-center text-light d-none" style="border-radius: 10px;"> 
+            <i class="bi bi-check2-all"></i>
+            Saved 
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <!-- Profile Content -->
+  <section class="container my-5">
+    <div class="row g-4">
+      <!-- Cart Items -->
+      <div class="col-lg-6">
+        <div class="card p-4">
+          <h4 class="fw-bold mb-3">🛒 Items in Cart</h4>
+          <div class="cart-item d-flex align-items-center mb-3">
+            <img src="https://images.unsplash.com/photo-1512499617640-c2f999098c53" alt="Smartwatch">
+            <div class="ms-3">
+              <h6 class="mb-1">Smartwatch</h6>
+              <p class="text-muted mb-0">$129.99</p>
+            </div>
+          </div>
+          <div class="cart-item d-flex align-items-center mb-3">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e" alt="Headphones">
+            <div class="ms-3">
+              <h6 class="mb-1">Wireless Headphones</h6>
+              <p class="text-muted mb-0">$99.99</p>
+            </div>
+          </div>
+          <div class="cart-item d-flex align-items-center mb-3 d-none" id="extraCartItem">
+            <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f" alt="Sunglasses">
+            <div class="ms-3">
+              <h6 class="mb-1">Stylish Sunglasses</h6>
+              <p class="text-muted mb-0">$59.99</p>
+            </div>
+          </div>
+          <button class="btn btn-primary mt-3">View Cart</button>
+          <div class="load-more">
+            <button class="btn btn-outline-secondary mt-3" id="loadMoreCart">Load More Items</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Purchase History -->
+      <div class="col-lg-6">
+        <div class="card p-4">
+          <h4 class="fw-bold mb-3">📦 Purchase History</h4>
+          <div class="history-item d-flex align-items-center mb-3">
+            <img src="https://images.unsplash.com/photo-1513708922272-6bdf49a1cf58" alt="Sneakers">
+            <div class="ms-3">
+              <h6 class="mb-1">Classic Sneakers</h6>
+              <p class="text-muted mb-0">Purchased on Sep 12, 2024</p>
+            </div>
+          </div>
+          <div class="history-item d-flex align-items-center mb-3">
+            <img src="https://images.unsplash.com/photo-1553456558-aff63285bdd1" alt="Bag">
+            <div class="ms-3">
+              <h6 class="mb-1">Leather Bag</h6>
+              <p class="text-muted mb-0">Purchased on Jul 8, 2024</p>
+            </div>
+          </div>
+          <div class="load-more">
+            <button class="btn btn-outline-secondary mt-3" id="loadMoreHistory">View All Orders</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="{{ url_for('static', filename='landing/profile.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,157 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.menu-btn {
+    align-self: center;
+    margin-left: auto;
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 10px;
+
+}
+
+.search-section {
+    display: flex;
+    margin: 4px;
+    flex-direction: column;
+}
+
+.search-section input {
+    width: 60%;
+    padding: 10px;
+    border: 2px solid rgb(70, 70, 70);
+    align-self: center;
+    border-radius: 10px;
+}
+
+.search-section button {
+    width: 20%;
+    padding: 8px;
+    align-self: center;
+    margin-block: 5px;
+    border-radius: 5px;
+    background-color: rgba(29, 185, 94, 0.651);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.search-section button:hover {
+    cursor: pointer;
+    background-color: rgba(29, 240, 22, 0.801);
+}
+
+.container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    /* justify-items: center; */
+    column-gap: 5px;
+    padding-block: 0.60rem;
+}
+
+pre {
+  background-color: #1e1e1e;
+  color: #dcdcdc;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow: auto;
+  max-height: 400px;
+  font-family: "Fira Code", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+
+}
+
+.data-holder {
+    width: 70%;
+    
+    padding-inline: 2rem;
+    background-color: #2d2d2d;
+    color: white;
+    padding: 1rem;
+    border-radius: 10px 0 0 10px;
+    flex-wrap: wrap;    
+}
+
+.sidebar {
+    background-color: #2d3748;
+    color: whitesmoke;
+    width: 22%;
+    padding: 1rem;
+    margin-left: 5px;
+    border-radius: 0 10px 10px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sm-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.smallBtn {
+    margin: 10px;
+    border: 2px solid rgb(231, 227, 227);
+    border-radius: 6px;
+    padding: 6px;
+    background-color: transparent;
+    color: rgb(199, 197, 197);
+}
+
+.smallBtn:hover {
+    cursor: pointer;
+}
+
+.select-box {
+    border-radius: 8px;
+    padding: 7px;
+    margin-top: -10px;
+}
+
+.head-text {
+    font-weight: 100;
+    margin-left: 7px;
+    font-size: 15px;
+}
+
+
+select.dropdown-select {                  
+  font-size: 16px;
+  padding: 0.7rem;
+  
+}
+
+.head-text{
+    color: #e08215;
+}
+
+.status{
+    color: rgb(11, 173, 11);
+}
+
+.api-notifi{
+    color: rgb(0, 255, 0);
+    align-self: center;
+}
+
+.filter-btn{
+    padding: 0.7rem;
+    width: 100%;
+    background-color: rgb(12, 150, 204);
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 15px;
+}
+.filter-btn:hover{
+    background-color: rgb(12, 122, 165);
+    font-weight: bold;
+}
+
