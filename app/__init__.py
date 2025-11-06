@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, redirect, url_for
 from .settings import BASE_PATH, jwt, db, login_manager
 from .models.model import User
 from datetime import datetime
@@ -30,6 +30,10 @@ def create_app():
     with app.app_context():
         db.create_all()
  
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return redirect(url_for("WebView:index"))
+    
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))

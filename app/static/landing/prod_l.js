@@ -84,8 +84,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 ele.classList.add("active")
             }
             let aTag = ele.querySelector("a");
-            if (aTag){    
-                aTag.href = `${page_url.replace("&page=1", "")}&page=${count++}`;
+            if (aTag){  
+                aTag.href = "";  
+                aTag.href = `${page_url.split("?")[0]}?page=${count++}`;
             }
         })
 
